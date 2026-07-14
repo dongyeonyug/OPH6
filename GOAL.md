@@ -21,6 +21,13 @@ Read these files first if they exist:
 - `lib/`
 - `data/`
 
+Current repository baseline:
+- Project path: `/Users/yugdong-yeon/Desktop/OPH3`.
+- Branch: `main`.
+- Remote: `https://github.com/dongyeonyug/OPH3`.
+- The existing remote is currently private. For final submission, make the repository judge-accessible by sharing access or making it public, and record the chosen status in `README.md` and `QA.md`.
+- The initial harness/spec snapshot has already been committed and pushed. Continue with implementation commits rather than rewriting history.
+
 If starting from an empty directory, create a new repository for TripCanvas and scaffold a Next.js app. Prefer:
 - Next.js
 - React
@@ -209,8 +216,9 @@ Phase 0: Orientation
 Phase 1: Harness setup
 - Create or update `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`, `QA.md`, and `CONTROL.md`.
 - Record the accepted scope and constraints.
-- Initialize Git if needed.
-- Before app implementation begins, create an initial commit containing the harness/spec state: `SPEC.md`, `GOAL.md`, `CONTROL.md`, `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`, `QA.md`, and `.omc/skills/taste-skill/SKILL.md` if present.
+- Initialize Git only if it is not already initialized.
+- If a GitHub remote already exists, verify it and continue from it. Do not recreate the repository or rewrite commit history.
+- Before app implementation begins, verify there is an initial commit containing the harness/spec state: `SPEC.md`, `GOAL.md`, `CONTROL.md`, `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`, `QA.md`, and `.omc/skills/taste-skill/SKILL.md` if present. If that commit is missing, create it before writing app implementation code.
 - After scaffolding is stable, create a second commit for the app scaffold.
 
 Phase 2: Core product
@@ -337,8 +345,9 @@ Deployment checks:
 
 GitHub checks:
 - Confirm remote repository exists.
-- Confirm the commit history includes an initial harness/spec commit from the first `/goal` execution before implementation commits.
+- Confirm the commit history includes an initial harness/spec commit before implementation commits.
 - Confirm source code is pushed.
+- Confirm the repository is judge-accessible before final submission. A private repository is acceptable only if the judges or presenter have access.
 - Record repository URL in `README.md`, `QA.md`, and Notion outline.
 
 Notion checks:
@@ -368,7 +377,7 @@ Completion audit:
 - Do not widen scope.
 - Do not claim local-only completion because deployment is required.
 - Do not claim completion before GitHub push and Notion outline are done.
-- During the first `/goal` execution, initialize Git if needed and commit the initial harness/spec state before writing app implementation code.
+- During goal execution, initialize Git only if needed. If Git already exists, preserve history, verify the existing harness/spec commit, and commit implementation work on top of it.
 - Keep the final answer concise.
 </execution_rules>
 

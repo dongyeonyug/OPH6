@@ -29,6 +29,15 @@ Therefore, the project should optimize for these outputs:
 - A Korean-language Notion page that presents the idea, process, screenshots, QA evidence, and demo script.
 - A GitHub repository with readable commits and open-source source code.
 
+Current repository baseline as of the Tighten pass:
+
+- Local project path: `/Users/yugdong-yeon/Desktop/OPH3`.
+- Git is already initialized on branch `main`.
+- GitHub remote exists at `https://github.com/dongyeonyug/OPH3`.
+- The remote repository is currently private. This satisfies the working-repo setup only if the final submitter can share it with judges or make it public before submission; the final package still needs a judge-accessible GitHub repository.
+- The harness/spec snapshot has already been committed and pushed before app implementation.
+- No final app implementation exists yet. The next `/goal` run should continue from this repository state, not assume an empty folder unless the files have been removed.
+
 ## 3. Product Concept
 
 Name: TripCanvas

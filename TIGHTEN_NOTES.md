@@ -63,3 +63,38 @@ Reason: the MVP should behave like a travel memory app, not a URL scrapbook. Use
 - Korean-language Notion requirement: present.
 
 Result: ready for `GOAL.md` execution.
+
+## 2026-07-14 Goal Forge Pass
+
+Scope requested: run `goal-forge` from Tighten through Check config for the current project.
+
+Tighten result:
+
+- `SPEC.md` already had concrete product behavior, non-goals, edge cases, scorecard, feedback loop, working memory, human control surface, and approved `done_when` criteria.
+- Added the current repository baseline so the next `/goal` run knows Git and GitHub already exist and should be continued, not recreated.
+- Preserved the core product constraints: real visible world map, map-first desktop-right/mobile-bottom detail surface, local-file-only image input, browser-local persistence, Korean-first UI, required deployment, and editable Korean Notion outline.
+
+Compile result:
+
+- `GOAL.md` already used the required XML block structure.
+- Updated `GOAL.md` to reflect the existing GitHub remote and initial harness/spec snapshot.
+- Adjusted Git workflow language so future execution verifies existing history and commits implementation work on top of it.
+- Added a final GitHub accessibility check: the current private repository must be shared with judges or made public before final submission.
+
+Config check result:
+
+- Command: `python3 /Users/yugdong-yeon/.codex/skills/goal-forge/scripts/inspect_codex_config.py --project-path /Users/yugdong-yeon/Desktop/OPH3`
+- Codex version: `codex-cli 0.144.1`.
+- Project trust: trusted.
+- Model: `gpt-5.5`.
+- Context window: `1050000`.
+- Auto-compact token limit: `997500`.
+- Reasoning: execution `high`, plan mode `xhigh`.
+- Approval policy: `never`.
+- Sandbox mode: `danger-full-access`.
+- `[features].goals`: `true`.
+- Autonomous goal status: ready.
+
+Remaining note:
+
+- The repository is currently private at `https://github.com/dongyeonyug/OPH3`. This is fine for continued work, but final submission must be judge-accessible.
