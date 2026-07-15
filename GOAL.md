@@ -1,7 +1,7 @@
 <goal>
 Build and submit TripCanvas, a Ralphthon-ready MVP web app and harness package.
 
-TripCanvas must be a deployed Next.js travel memory app with Korean-first user-facing UI where a user can select a country from a real visible world-map experience, then see that country's Pinterest-style travel memories and local-photo input inside a responsive detail surface: a right-side panel on desktop and a bottom panel/sheet on mobile. The app must not present the map, board, and form as one long all-in-one scroll page. New memories must persist after refresh in the same browser/device. The final package must also prove Codex autonomous-loop design through maintained working-memory files, GitHub history, deployment evidence, QA evidence, and an editable Korean-language Notion presentation outline for a 3-minute team presentation.
+TripCanvas must be a deployed Next.js travel memory app with Korean-first user-facing UI where a user can select a country from a real visible world-map experience, then see that country's Pinterest-style saved photo board and local-photo input inside a responsive detail surface: a right-side panel on desktop and a bottom panel/sheet on mobile. The selected-country surface must show the saved photo board first, expose photo adding as a clear action, and open a large photo viewer/lightbox when a memory card is clicked. The app must not present the map, board, and form as one long all-in-one scroll page. The app surface must also stay product-pure: no Ralphthon evidence panel, GOAL/PLAN/QA/CONTROL summaries, GitHub/deployment status cards, or Notion/presentation process content should appear in the user-facing TripCanvas UI. New memories must persist after refresh in the same browser/device. The final package must prove Codex autonomous-loop design through maintained working-memory files, GitHub history, deployment evidence, QA evidence, and an editable Korean-language Notion presentation outline for a 3-minute team presentation outside the app surface.
 </goal>
 
 <context>
@@ -70,16 +70,19 @@ Ralphthon strategy:
 Must-have product behavior:
 - First screen is the usable map experience, not a marketing landing page.
 - The primary UX is a map-first application shell, not a scroll-first page.
-- User-facing app copy is Korean-first, including headings, buttons, form labels, validation hints, empty states, helper text, and demo/process labels. Product names, country names, URLs, file names, and proper nouns may remain English where natural.
+- User-facing app copy is Korean-first, including headings, buttons, form labels, validation hints, empty states, and helper text. Product names, country names, URLs, file names, and proper nouns may remain English where natural.
 - A real geographic world map is visible in the app, and a user can select at least 4 sample countries from the map.
 - Country selection opens or updates the selected-country detail surface: right-side panel on desktop, bottom panel/sheet on mobile.
-- The selected-country detail surface displays seeded travel memories with image-first cards.
+- The selected-country detail surface displays the saved photo board first, using seeded and saved travel memories as image-first cards.
+- A clear `사진 추가` action inside the selected-country detail surface opens or reveals the add-memory form; the add form should not be the default first thing shown after country click when memories exist.
+- Clicking a memory card opens a large photo viewer/lightbox with the selected image and memory details, then returns cleanly to the same board when closed.
 - The add-memory form lives inside the selected-country detail surface and accepts country, title, date, local photo file, short note, and tags or mood.
 - Local photo file picker is the only user image input; the add-memory UI must not expose an image URL field, paste field, or URL fallback path.
 - New memories persist in browser-local storage after refresh. Prefer `IndexedDB` for local image data and use `localStorage` only for small metadata or fallback state.
 - Empty countries show a useful empty state.
 - Desktop and mobile layouts are coherent and do not overlap controls or text.
 - Do not lay out the map, memory board, add-memory form, and process/harness content as separate full-page stacked sections. The memory board and form should appear only in the selected-country responsive detail surface.
+- Do not show service-irrelevant harness or competition evidence on the app surface. Ralphthon/GOAL/PLAN/ATTEMPTS/NOTES/QA/CONTROL, GitHub, deployment, and Notion presentation evidence belongs in README, Notion, QA, and repo documents, not in the user-facing TripCanvas product UI.
 
 Design rules:
 - Read and apply the project-local `taste-skill` at `.omc/skills/taste-skill/SKILL.md` for visual quality, frontend taste, anti-slop review, responsive layout, Korean copy polish, and final pre-flight checks.
@@ -90,8 +93,10 @@ Design rules:
 - Follow a Pinterest-inspired visual direction: warm cream surfaces, white canvas, image-first cards, tight masonry-like grid, restrained red accent `#e60023`, rounded 16px cards/buttons, 32px only for larger surfaces, minimal shadows, Inter or similar sans-serif.
 - Keep Korean copy concise, natural, and presenter-friendly. Do not ship an English-only app UI or awkward machine-translated Korean.
 - Do not overuse red.
+- Countries with saved photos should use a restrained neutral/soft visited state. Reserve Pinterest Red for the selected country, primary CTA, and small active accents.
 - Do not create a generic dashboard.
 - Do not add decorative visual clutter that competes with travel photos.
+- Do not create an in-app evidence/process panel like "Ralphthon evidence", "app and loop", "GOAL/PLAN/CONTROL", "ATTEMPTS/NOTES/QA", deployment status, GitHub status, or Notion status. The product should feel like a travel memory service, while the harness story lives in external submission artifacts.
 
 Technical boundaries:
 - Deployment is required. Prefer Vercel. If the first deployment path fails, try a practical fallback deployment path and record the attempt in `ATTEMPTS.md`. A local-only demo is not complete.
@@ -156,20 +161,21 @@ Stop feature work once the passing threshold is met. Use remaining time only for
 This goal is complete only when all of the following are true:
 
 1. `npm run build` completes successfully.
-2. The app provides this user-observable demo flow: a real visible world map opens, country click opens or updates the selected-country detail surface, a memory can be added there with a local photo file, and the memory persists after refresh in the same browser/device.
+2. The app provides this user-observable demo flow: a real visible world map opens, country click opens or updates the selected-country detail surface with the saved photo board first, a memory card opens a large photo viewer/lightbox, a memory can be added through an explicit `사진 추가` action with a local photo file, and the memory persists after refresh in the same browser/device.
 3. The app uses a map-first responsive layout: on desktop the selected country's memories and form appear in a right-side panel; on mobile/narrow viewports they appear in a bottom panel or sheet. The final UI must not be a single scroll page where map, board, and form are all stacked as full-page sections.
 4. The app UI is Korean-first and does not feel like an English-only product; headings, buttons, form labels, validation hints, empty states, and helper text are in natural Korean except product names, country names, URLs, file names, and proper nouns.
 5. The add-memory form exposes no image URL input or URL fallback path, and invalid or oversized file cases show readable Korean validation or fallback UI.
 6. The visual design follows the Pinterest-inspired direction: warm cream surfaces, image-first cards, restrained red CTA/accent, rounded cards, and masonry-like grid.
-7. `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`, `QA.md`, and `CONTROL.md` exist and document the autonomous loop.
-8. A GitHub repository exists with source code pushed.
-9. A production deployment URL exists and opens the app.
-10. The production deployment URL supports the core demo flow, not merely a static placeholder.
-11. A Korean-language Notion presentation outline exists with project summary, harness strategy, scoring alignment, demo script, QA evidence, and future expansion.
-12. The Notion presentation outline is written in Korean and is easy for the presenter to edit.
-13. `README.md` includes local run instructions, the production URL, the GitHub/repo context, and a short Ralphthon explanation.
-14. `QA.md` records the final automated build result, manual demo result, real-world-map interaction result, responsive detail panel/sheet result, local photo add/persistence result, file validation result, mobile/desktop visual result, deployment result, GitHub result, Notion result, and Korean UI review result.
-15. No known blocker remains for a 3-minute live demo.
+7. The user-facing app surface contains only TripCanvas travel-memory product UI, with no Ralphthon evidence panel, GOAL/PLAN/QA/CONTROL cards, GitHub/deployment status, or Notion/presentation process content.
+8. `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`, `QA.md`, and `CONTROL.md` exist and document the autonomous loop.
+9. A GitHub repository exists with source code pushed.
+10. A production deployment URL exists and opens the app.
+11. The production deployment URL supports the core demo flow, not merely a static placeholder.
+12. A Korean-language Notion presentation outline exists with project summary, harness strategy, scoring alignment, demo script, QA evidence, and future expansion.
+13. The Notion presentation outline is written in Korean and is easy for the presenter to edit.
+14. `README.md` includes local run instructions, the production URL, the GitHub/repo context, and a short Ralphthon explanation.
+15. `QA.md` records the final automated build result, manual demo result, real-world-map interaction result, responsive detail panel/sheet result, local photo add/persistence result, file validation result, mobile/desktop visual result, deployment result, GitHub result, Notion result, Korean UI review result, photo lightbox result, and product-surface boundary review.
+16. No known blocker remains for a 3-minute live demo.
 </done_when>
 
 <feedback_loop>
@@ -323,6 +329,8 @@ Manual local checks:
 - Start the app locally.
 - Open the app without runtime error.
 - Select at least two sample countries and confirm the selected-country detail surface changes.
+- Confirm country selection shows the saved photo board first, with `사진 추가` as the explicit add action.
+- Click a memory card and confirm a large photo viewer/lightbox opens and closes without losing board state.
 - On desktop, confirm the detail surface is a right-side panel containing memories and the add-memory form.
 - On mobile/narrow viewport, confirm the detail surface is a bottom panel/sheet containing memories and the add-memory form.
 - Add a memory with a local photo file.
@@ -335,6 +343,8 @@ Visual checks:
 - Desktop viewport: map, right-side panel, memory cards, and form are coherent and image-first.
 - Mobile/narrow viewport: map and bottom panel/sheet are coherent with no overlap, clipped text, or forced full-page stacked board/form.
 - Red accent is restrained and used for primary CTA/active state only.
+- Countries with saved memories use an understated visited-state treatment; the selected country and primary action carry the strongest red accent.
+- Product-surface boundary review: app UI does not show Ralphthon evidence panels, GOAL/PLAN/QA/CONTROL labels, GitHub/deployment status, Notion process content, or other service-irrelevant submission metadata.
 - Korean UI review: headings, buttons, form labels, validation hints, empty states, and helper text are Korean-first and natural.
 
 Deployment checks:

@@ -24,4 +24,4 @@ Keep the product small and reliable, with a map-first UI where clicking a countr
 
 ## Open Decisions
 
-- None. Product name is `TripCanvas`; deployment is required; Notion must be Korean and editable; user-added images are local-file-only with no image URL input or fallback; layout must be map-first with country details in a desktop right panel and mobile bottom panel/sheet, not a single stacked scroll page.
+- None. Product name is `TripCanvas`; deployment is required; Notion must be Korean and editable; user-added images are local-file-only with no image URL input or fallback; layout must be map-first with country details in a desktop right panel and mobile bottom panel/sheet, not a single stacked scroll page. Country click shows the saved photo board first, `사진 추가` is an explicit action, memory-card click opens a large photo viewer/lightbox, visited-country map styling stays understated, and service-irrelevant Ralphthon/GOAL/QA/GitHub/Notion evidence must not appear on the user-facing app surface.

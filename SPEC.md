@@ -56,10 +56,11 @@ Target demo flow:
 
 1. Open the app and see a warm, Pinterest-inspired travel map with Korean-first UI copy.
 2. Click a highlighted country such as Japan, France, or Korea.
-3. See that country's travel board open in the contextual detail surface: right-side panel on desktop, bottom panel/sheet on mobile.
-4. Add a new memory through a Korean form inside that same detail surface, using a local photo file plus title, note, date, and tags.
-5. Refresh or switch countries and confirm the entry persists through local storage.
-6. Show responsive layout briefly on a narrow viewport and confirm the country detail surface moves to the bottom instead of becoming a long stacked page.
+3. See that country's saved photo board first in the contextual detail surface: right-side panel on desktop, bottom panel/sheet on mobile.
+4. Click a memory card and open a large photo viewer/lightbox for a more emotional visual moment.
+5. Add a new memory through a Korean form inside that same detail surface, using a local photo file plus title, note, date, and tags.
+6. Refresh or switch countries and confirm the entry persists through local storage.
+7. Show responsive layout briefly on a narrow viewport and confirm the country detail surface moves to the bottom instead of becoming a long stacked page.
 
 ## 4. MVP Scope
 
@@ -73,6 +74,8 @@ Target demo flow:
 - Selected-country detail panel/sheet, not a full-page stacked section.
 - Desktop layout: the map remains the primary surface and selected-country memories/form appear in a right-side panel.
 - Mobile layout: the map remains visible and selected-country memories/form appear in a bottom panel or sheet.
+- Country click defaults to the saved photo board view first, with a clear `사진 추가` action available inside the detail surface.
+- Clicking a memory card opens a large photo viewer/lightbox rather than only expanding text inline.
 - Pinterest-style masonry or masonry-like image grid.
 - Add-memory form with:
   - country
@@ -84,6 +87,7 @@ Target demo flow:
 - Browser-local persistence for memories and locally selected images. Prefer `IndexedDB` for local image data and use `localStorage` only for small metadata or fallback state.
 - Responsive desktop and mobile layouts.
 - No final implementation where map, board, add-memory form, and process/harness content are all displayed as one top-to-bottom scroll page.
+- No service-irrelevant harness or competition evidence panel on the app surface. Ralphthon/GOAL/PLAN/QA/Notion/GitHub process information belongs in README, Notion, QA, and repo documents, not in the user-facing travel product UI.
 - Basic empty state for countries without memories.
 - Production deployment, preferably Vercel, with the deployed URL included in the GitHub README and Notion presentation outline.
 - GitHub repository initialized, committed, and pushed.
@@ -100,7 +104,7 @@ Target demo flow:
 - Subtle Framer Motion transitions for country selection and card appearance.
 - Clear visual distinction between visited and unvisited countries.
 - Screenshot or visual evidence attached or linked in Notion.
-- A compact in-app "Built by Codex loop" or process summary panel, if it does not clutter the demo.
+- A compact process summary in README or Notion. Do not surface it inside the app itself.
 
 ### Nice To Have
 
@@ -177,6 +181,7 @@ Use the provided Pinterest-inspired design direction:
 - White canvas.
 - Korean-first product copy that feels friendly, short, and demo-ready for Korean presenters and users.
 - Pinterest Red `#e60023` only for primary CTAs, active state, and small brand accents.
+- Countries with saved photos should use a restrained neutral/soft visited state; reserve Pinterest Red for the selected country, primary CTA, and small active accents.
 - Image-first cards with 16px radius.
 - Larger feature surfaces may use 32px radius.
 - Masonry-style photo grid with tight gaps.
@@ -202,6 +207,7 @@ Design constraints:
 - First screen must be the usable map experience.
 - Do not ship a one-page scroll layout where the map, selected board, form, and process panel are all visible as stacked sections.
 - Preserve map context after country selection: desktop uses a right-side detail panel; mobile uses a bottom detail panel/sheet.
+- Do not show Ralphthon evidence cards, GOAL/PLAN/CONTROL labels, QA summaries, deployment status, GitHub status, or Notion/presentation process content in the product surface. The completed app should feel like TripCanvas, not a submission dashboard.
 
 ## 7.5 Edge Cases
 
@@ -213,6 +219,7 @@ Design constraints:
 - Mobile viewport is narrow: selected-country memories and form move into a bottom panel/sheet with no overlapping controls or clipped text.
 - Desktop viewport is wide: selected-country memories and form appear in a right-side panel while the map remains usable.
 - Country selection is cleared or switched: the detail surface updates predictably without leaving stale cards or form state for the previous country.
+- User clicks a saved memory card: open a large photo viewer/lightbox with the selected image, title, date, note, and close control; closing returns to the same country board without losing state.
 
 ## 8. Harness Architecture
 
@@ -354,6 +361,8 @@ Manual checks:
 - App opens without runtime error.
 - At least 4 sample countries are visible or selectable.
 - Country selection opens or updates the selected-country detail panel/sheet.
+- Country selection shows the saved photo board first, not the add form or process evidence first.
+- Clicking a memory card opens a large photo viewer/lightbox and returns cleanly to the board when closed.
 - Desktop layout shows selected-country memories/form in a right-side panel, not below the map as a full-page section.
 - Mobile layout shows selected-country memories/form in a bottom panel/sheet, not as a long stacked page.
 - Add-memory form creates a new card from a local photo file.
@@ -370,9 +379,11 @@ These criteria are approved for compiling into `GOAL.md`.
 
 - `npm run build` completes successfully.
 - The app provides a user-observable demo flow: a real visible world map opens, country click opens or updates the selected-country detail panel/sheet, a memory can be added there with a local photo file, and the memory persists after refresh in the same browser/device.
+- The selected-country detail surface shows the saved photo board first, provides `사진 추가` as the explicit add action, and memory cards open a large photo viewer/lightbox.
 - The app uses a map-first responsive layout: desktop right-side detail panel and mobile bottom detail panel/sheet. It is not a single scroll page with map, board, and form stacked as full-page sections.
 - The add-memory form intentionally supports local image files only and exposes no image URL input.
 - The visual design follows the Pinterest-inspired direction closely enough to be recognizable: warm cream surfaces, image-first cards, restrained red CTA, rounded cards, and masonry-like grid.
+- The user-facing app surface contains only TripCanvas travel-memory product UI. Ralphthon evidence, GOAL/PLAN/QA/CONTROL summaries, GitHub/deployment status, and Notion presentation process content are kept out of the app UI and documented only in submission materials.
 - `GOAL.md`, `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`, `QA.md`, and `CONTROL.md` exist and document the autonomous loop.
 - A GitHub repository exists with source code pushed.
 - A production deployment URL exists and opens the app.
@@ -391,6 +402,8 @@ Confirmed decisions:
 - File-only browser-local image input is confirmed: local photo file selection is the only user image path, image URL input is removed, and real cloud upload is out of scope for this MVP.
 - Real world map requirement is confirmed: final completion requires an actual visible geographic world map with clickable countries or country regions.
 - Layout requirement is confirmed: clicking a country must reveal/update a responsive detail surface, with desktop right panel and mobile bottom panel/sheet. The previous one-page scroll interpretation is rejected.
+- Interaction requirement is confirmed: country click should show the saved photo board first, `사진 추가` is an explicit action, memory-card click opens a large photo viewer/lightbox, and visited-country map styling should be understated while red is reserved for the selected country/primary action.
+- Product-surface boundary is confirmed: final app UI must not include service-irrelevant Ralphthon evidence panels or GOAL/PLAN/QA/GitHub/Notion process cards. Those belong in repository and presentation artifacts.
 
 ## 15. Recommended Presentation Script
 
