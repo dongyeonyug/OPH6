@@ -24,8 +24,8 @@ npm run qa:playwright
 ## 배포와 저장소
 
 - GitHub: https://github.com/dongyeonyug/OPH6
-- Production URL: fallback Sites deployment 진행 중
-- 저장소 접근성: 원격 저장소는 현재 private로 알려져 있습니다. 제출 전 심사자가 접근할 수 있도록 공개 전환 또는 접근 권한 공유가 필요합니다.
+- Production URL: https://tripcanvas-oph6.yugdongyeon.chatgpt.site
+- 저장소 접근성: 제출 검토를 위해 GitHub 저장소를 public으로 전환했습니다.
 
 ## 환경 변수
 
@@ -38,6 +38,7 @@ npm run qa:playwright
 - 작업지시: `GOAL.md`, `SPEC.md`, `CONTROL.md`에 요구사항과 제한을 구조화했습니다.
 - 자율 수행: `PLAN.md`, `ATTEMPTS.md`, `NOTES.md`에 실행 루프와 실패 후 조정을 기록했습니다.
 - 검증 루프: `QA.md`와 Playwright 테스트가 지도 선택, 로컬 사진 추가, 앨범, 편집, 대표 사진, 슬라이드쇼, 새로고침 지속성, 모바일/데스크톱 오버플로를 확인합니다.
+- 배포 검증: production URL에서 데스크톱/모바일 직접 브라우저 스모크가 통과했습니다.
 - 발표 문서: `PRESENTATION.md`는 한국어로 편집 가능한 3분 발표 자료입니다.
 
 ## 현재 MVP 범위

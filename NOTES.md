@@ -27,3 +27,4 @@
 - 2026-07-16: Browser-local image storage uses IndexedDB for blobs and localStorage for metadata fallback.
 - 2026-07-16: Playwright desktop/mobile core flow passes after fixing mobile hover preview and using keyboard activation for album card actions where Playwright pointer hit testing saw the scroll container.
 - 2026-07-16: Vercel production deployment is blocked by invalid local token. Sites fallback project created with `.openai/hosting.json`.
+- 2026-07-16: Sites version 4 deployed successfully at `https://tripcanvas-oph6.yugdongyeon.chatgpt.site`; direct production browser smoke passed for desktop and mobile.

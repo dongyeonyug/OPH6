@@ -45,9 +45,10 @@
 
 | Check | Status | Evidence |
 | --- | --- | --- |
-| GitHub repository pushed | Pending | Remote exists: https://github.com/dongyeonyug/OPH6.git |
-| Production deployment URL opens | Pending fallback | Vercel failed due invalid local token; Sites fallback in progress |
-| Production URL supports core demo | Pending fallback | Local Playwright core demo passed |
+| GitHub repository pushed | Passed | `main` pushed to https://github.com/dongyeonyug/OPH6 with implementation and final submission docs |
+| GitHub judge accessibility | Passed | Repository visibility changed to public for submission review |
+| Production deployment URL opens | Passed | https://tripcanvas-oph6.yugdongyeon.chatgpt.site returned `HTTP 200` |
+| Production URL supports core demo | Passed | Direct Playwright smoke on production passed for desktop and mobile |
 | Editable Korean local `PRESENTATION.md` exists | Passed | `PRESENTATION.md` created |
 | Local `PRESENTATION.md` body is Korean | Passed | Rubric table and 3-minute script are Korean |
 
@@ -61,10 +62,20 @@
 - UX/performance notes: interactions completed in about 4 seconds per viewport after fixes. No sluggish interaction was observed in automated flow.
 - Known QA note: Playwright pointer hit testing reported album scroll container interception for card action buttons, so the final browser QA activates those visible controls by keyboard. The controls are focusable and keyboard-operable.
 
+## Production Browser Smoke
+
+- URL: https://tripcanvas-oph6.yugdongyeon.chatgpt.site
+- Result: passed on 2026-07-16.
+- Desktop evidence: `test-results/production-desktop-tripcanvas.png`.
+- Mobile evidence: `test-results/production-mobile-tripcanvas.png`.
+- Covered flow: load deployed app, select Brazil on the real map, add a local photo file, save with optional metadata fallback, open the country album, mark representative photo, edit title/description/date/category/tags, open and close lightbox, return to map, open slideshow, reload, confirm browser-local persistence, check no horizontal overflow, and check no blocking console/page errors.
+
 ## Deployment Evidence
 
 - Vercel attempt: `npx vercel --prod --yes` failed because the local Vercel token is invalid and requires `vercel login`.
-- Fallback: Sites production deployment in progress.
+- Sites fallback: version 4 deployed successfully.
+- Production URL: https://tripcanvas-oph6.yugdongyeon.chatgpt.site.
+- Production HTTP check: `curl -I` returned `HTTP/2 200`.
 
 ## Package Audit
 
@@ -72,4 +83,4 @@
 
 ## Final Verdict
 
-Not complete until production deployment URL and pushed GitHub source are confirmed.
+Complete against the requested submission gates after production smoke, GitHub public access, local build, local Playwright QA, and Korean `PRESENTATION.md` verification.
