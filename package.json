@@ -1,0 +1,28 @@
+{
+  "name": "tripcanvas",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "qa:playwright": "playwright test"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "next": "^14.2.30",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-simple-maps": "^3.0.0",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^20.19.8",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@types/topojson-client": "^3.1.5",
+    "typescript": "^5.8.3"
+  }
+}

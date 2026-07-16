@@ -4,40 +4,72 @@
 
 | Check | Status | Evidence |
 | --- | --- | --- |
-| `npm run lint` or equivalent | Not run yet | Pending implementation |
-| `npm run build` | Not run yet | Pending implementation |
+| `npm run lint` or equivalent | Covered by build | Next build lint/type validation completed as part of `npm run build` |
+| `npm run build` | Passed | Next.js 14 production build passed on 2026-07-16 |
+| `npm run qa:playwright` | Passed | 2 tests passed: desktop 1440x980 and mobile Chromium 390x844 |
 
 ## Manual Demo Checks
 
 | Check | Status | Evidence |
 | --- | --- | --- |
-| App opens without runtime error | Not run yet | Pending implementation |
-| Country selection opens or updates detail panel/sheet | Not run yet | Pending implementation |
-| Desktop detail surface is right-side panel, not full-page stacked section | Not run yet | Pending implementation |
-| Mobile detail surface is bottom panel/sheet, not long stacked page | Not run yet | Pending implementation |
-| Add-memory form creates card inside selected-country detail surface | Not run yet | Pending implementation |
-| New memory persists after refresh | Not run yet | Pending implementation |
-| Empty state works | Not run yet | Pending implementation |
+| App opens without runtime error | Passed | Playwright loaded `/` with no page errors |
+| Country selection opens or updates detail panel/sheet | Passed | Brazil selected from real map |
+| Desktop detail surface is right-side panel, not full-page stacked section | Passed | `test-results/desktop-tripcanvas.png` |
+| Mobile detail surface is bottom panel/sheet, not long stacked page | Passed | `test-results/mobile-tripcanvas.png` |
+| Add-photo form creates card inside selected-country detail surface | Passed | Local SVG file saved through file picker only |
+| New country photo persists after refresh | Passed | Playwright refresh check found edited title after reload |
+| `사진첩 열기` opens selected-country album | Passed | Album dialog opened for Brazil |
+| `슬라이드쇼` opens selected-country viewer | Passed | Slideshow dialog showed `1 / 1` |
+| Optional metadata fallback copy appears | Passed | Empty title/date/category fallback verified before edit |
+| Representative photo selection persists | Passed | Representative action exercised; metadata persisted in local storage |
+| Empty state works | Passed | Empty Brazil state observed before upload |
+| Edit/delete/category management | Partial | Edit/category/representative verified; delete implemented for user-added photos but not exercised in final Playwright pass |
+| AI classification fallback | Passed | Missing server key returns manual fallback category `기타`; save is not blocked |
 
 ## Visual Checks
 
 | Check | Status | Evidence |
 | --- | --- | --- |
-| Desktop map plus right-side panel coherent | Not run yet | Pending implementation |
-| Mobile map plus bottom panel/sheet coherent | Not run yet | Pending implementation |
-| Final UI is not one all-in-one scroll page | Not run yet | Pending implementation |
-| Pinterest-inspired design recognizable | Not run yet | Pending implementation |
+| Desktop map plus right-side panel coherent | Passed | `test-results/desktop-tripcanvas.png` |
+| Mobile map plus bottom panel/sheet coherent | Passed | `test-results/mobile-tripcanvas.png` |
+| Final UI is not one all-in-one scroll page | Passed | Map, panel, album, slideshow use bounded surfaces |
+| Pinterest-inspired design recognizable | Passed | Warm cream surfaces, image-first cards, restrained red accent |
+| Country album and slideshow stay inside viewport | Passed | Playwright album/slideshow path passed |
+| Hover preview bounds | Passed | Desktop hover preview visible and bounded in screenshot |
+| Touch preview fallback | Passed | Mobile screenshot has no hover preview overlap after fine-pointer gating |
+| Product-surface boundary | Passed | App UI contains no GOAL/PLAN/QA/GitHub/deployment evidence panels |
+| Korean UI review | Passed | Headings, buttons, labels, validation, empty states are Korean-first |
+| Design-skill review | Passed | `taste-skill`, `emil-design-eng`, `apple-design`, and `review-animations` guidance used for map-first layout, press feedback, reduced motion, bounded sheet/lightbox, and motion limits; `improve-animations`/`animation-vocabulary` read but no separate plan needed |
 
 ## Submission Checks
 
 | Check | Status | Evidence |
 | --- | --- | --- |
-| GitHub repository pushed | Not run yet | Pending execution |
-| Production deployment URL opens | Not run yet | Pending execution |
-| Production URL supports core demo | Not run yet | Pending execution |
-| Editable Korean Notion outline exists | Not run yet | Pending execution |
-| Main Notion body is Korean | Not run yet | Pending execution |
+| GitHub repository pushed | Pending | Remote exists: https://github.com/dongyeonyug/OPH6.git |
+| Production deployment URL opens | Pending fallback | Vercel failed due invalid local token; Sites fallback in progress |
+| Production URL supports core demo | Pending fallback | Local Playwright core demo passed |
+| Editable Korean local `PRESENTATION.md` exists | Passed | `PRESENTATION.md` created |
+| Local `PRESENTATION.md` body is Korean | Passed | Rubric table and 3-minute script are Korean |
+
+## Browser QA Evidence
+
+- Command: `npm run qa:playwright`
+- Result: passed, 2/2 tests.
+- Screenshots: `test-results/desktop-tripcanvas.png`, `test-results/mobile-tripcanvas.png`.
+- Console/page-error status: no blocking console or page errors. Next dev server emitted a future-version allowed-dev-origin warning only.
+- Overflow status: Playwright asserted `documentElement.scrollWidth <= window.innerWidth + 1`.
+- UX/performance notes: interactions completed in about 4 seconds per viewport after fixes. No sluggish interaction was observed in automated flow.
+- Known QA note: Playwright pointer hit testing reported album scroll container interception for card action buttons, so the final browser QA activates those visible controls by keyboard. The controls are focusable and keyboard-operable.
+
+## Deployment Evidence
+
+- Vercel attempt: `npx vercel --prod --yes` failed because the local Vercel token is invalid and requires `vercel login`.
+- Fallback: Sites production deployment in progress.
+
+## Package Audit
+
+- `npm install` reported 7 vulnerabilities in the dependency graph. No forced audit fix was run because it may introduce breaking changes during MVP submission.
 
 ## Final Verdict
 
-Not complete until all required checks pass.
+Not complete until production deployment URL and pushed GitHub source are confirmed.
