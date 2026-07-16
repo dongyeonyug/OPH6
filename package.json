@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && rm -rf dist && cp -R out dist",
+    "build": "next build && node scripts/prepare-sites-dist.mjs",
     "build:next": "next build",
     "start": "next start",
     "qa:playwright": "playwright test"
